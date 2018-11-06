@@ -43,27 +43,27 @@ function daBears(){
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ["papaBear", "mamaBear"]; 
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear"];
 
 
 // *************
@@ -82,32 +82,86 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // "charger" once, and invoke it twice on "mustang".
 
 // CODE HERE...
+function Vehicle(gasRemaining) {
+  this.gasRemaining = 100;
+  // needs to be added via vehicle prototype property: 
+  // this.drive = function() {
+  //   return this.gasRemaining -= 25; 
+  // } 
+}
 
+Vehicle.prototype.drive = function() {
+  return this.gasRemaining -= 25; 
+}
 
+var charger = new Vehicle();
+charger.drive();  
 
+var mustang = new Vehicle();
+mustang.drive(); 
+mustang.drive(); 
 
 
 // -----------------------------------------------------------------------------
 
+
 // *************
 // * PROBLEM 3 *
 // *************
+/* 
+For this problem, you will need to add a method to the String prototype named
+"grammarPolice".  When called on a string, "grammarPolice" will return a new string where the first letter of every word is capitalized, while reverting the remainder of each word to lowercase.
+
+For example: "OH HELLO THERE" becomes "Oh Hello There"
+
+Your method may be passed punctuation, numbers or other non-letter characters
+and should neither modify them nor break when encountering them.
+
+CODE HERE...
+*/
+// grammarPoliceTest = function(str) {
+//   return str.toLowerCase()
+//   .split(' ')
+//   .map(elem => {
+//     return elem.replace(elem[0], elem[0].toUpperCase());
+//   }).join(' '); 
+// }
+// console.log(grammarPoliceTest("OH HELLO THERE")); // Oh Hello There 
+
+// String.prototype.grammarPolice = function (str) {
+//   var newStr = str;
+//   return newStr.toLowerCase() 
+//   .split(' ')
+//   .map(word => {
+//     return word.replace(word[0], word[0].toUpperCase());
+//   })
+//   .join(' '); 
+// }
+
+var someString = 'OH! HELLO THERE, woh, $56, 22'; 
+// console.log(someString.grammarPolice(someString)); 
+// // Oh! Hello There, Woh, $56, 22 
+
+function String(str) {
+  // this.newStr = str; 
+  this.grammarPolice = function(str) {
+    var newStr = str;
+    return newStr.toLowerCase() 
+    .split(' ')
+    .map(word => {
+      return word.replace(word[0], word[0].toUpperCase());
+    })
+    .join(' '); 
+  }  
+}
+
+var example = new String; 
+example.grammarPolice(someString)
+
+// console.log(someString.grammarPolice(someString)); 
 
 
-// For this problem, you will need to add a method to the String prototype named
-// "grammarPolice".  When called on a string, "grammarPolice" will return a new string
-//  where the first letter of every word is capitalized, while reverting the remainder
-// of each word to lowercase.
 
-// For example: "OH HELLO THERE" becomes "Oh Hello There"
-
-// Your method may be passed punctuation, numbers or other non-letter characters
-// and should neither modify them nor break when encountering them.
-
-
-
-
-// CODE HERE...
 
 
 
@@ -126,8 +180,11 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // In all other cases, return "Different values"
 
 // CODE HERE...
-
-
+function valueType(str1, str2) {
+  if (str1 === str2) return "Exactly the same";
+  if (str1 == str2) return "Same value, different types";
+  return "Different values";
+}
 
 // *************
 // * PROBLEM 5 *
@@ -141,3 +198,8 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 var theAnswer = "Unknown";
 
 // CODE HERE...
+function promiseCatcher(promise) {
+  promise.then(response => {
+    theAnswer = response; 
+  });
+}
